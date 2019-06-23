@@ -31,7 +31,8 @@ module Sample
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-
+    
+    # ※本番環境ではこの環境変数に、本番の React を動かしているサーバーのURLを指定する
     config.x.cors_allowed_origins = ENV.fetch('CORS_ALLOWED_ORIGINS', 'http://localhost:3000')
   end
 end
