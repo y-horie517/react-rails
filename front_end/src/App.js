@@ -1,70 +1,63 @@
 import React from "react"
-// import "./App.scss"
+import "./App.css"
 
-import AddMovie from "./components/AddMovie"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import AddMovieForm from "./components/AddMovieForm"
 import MovieList from "./components/MovieList"
-
-import axios from "axios"
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+
+    // 動画一覧を格納する配列をstateとして初期化
     this.state = {
       movies: [],
     }
-
+    // railsを起動しているポートを指定
     this.host = "http://localhost:3001/"
+
+    // 動画一覧を取得するメソッドをthisにbind
+    this.getTasks = this.getTasks.bind(this);
   }
 
+  // コンポーネントマウント時にタスク一覧を取得する
   componentDidMount() {
-    axios
-      .get(`${this.host}movies`)
-      .then(res => {
-        this.setState({ movies: res.data })
+    this.getTasks()
+  }
+
+  getTasks() {
+    // 動画一覧を取得(movies)
+    let request = new Request(`${this.host}movies`, {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type': 'application/json'
       })
-      .catch(data => {
-        console.log(data)
-      })
+    });
+
+    fetch(request).then(function (response) {
+      return response.json();
+    }).then(function (movies) {
+      // 取得が完了したら state にセットする
+      this.setState({
+        movies: movies
+      });
+    }.bind(this)).catch(function (error) {
+      console.error(error);
+    });
   }
 
   render() {
     return (
       <div className="App">
-        <AddMovie OnSubmitTitle={this.addTodo} />
-        <MovieList movies={this.state.movies} />
+        <Header />
+        <div className="content">
+          <AddMovieForm getTasks={this.getTasks} className="form"/>
+          <MovieList movies={this.state.movies} />
+        </div>
+        <Footer />
       </div>
     )
-  }
-
-  // deleteTodo = id => {
-  //   const { todos } = this.state
-
-  //   axios
-  //     .delete(`${this.host}todos/${id}`)
-  //     .then(res => {
-  //       this.setState({
-  //         todos: todos.filter(todo => {
-  //           return todo.id !== id
-  //         }),
-  //       })
-  //     })
-  //     .catch(data => {
-  //       console.log(data)
-  //     })
-  // }
-
-  AddMovie = movie => {
-    const { movies } = this.state
-    axios
-      .post(`${this.host}movies`, movie)
-      .then(res => {
-        this.setState({
-          movies: [...movies, res.data],
-        })
-      })
-      .catch(data => {
-        console.log(data)
-      })
   }
 }
 

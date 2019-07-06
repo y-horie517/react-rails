@@ -10,8 +10,7 @@ class AddMovie extends React.Component {
     return {
       title: "無題",
       description: "",
-      url: "",
-      // deadline:
+      url: ""
     }
   }
 
@@ -21,19 +20,25 @@ class AddMovie extends React.Component {
       <div>
         <h2>AddMovie</h2>
         <form onSubmit={this.handleOnSubmit}>
-          <input
-            required={true}
-            onChange={event => this.handleOnChange(event, "title")}
-            value={title}
-          />
-          <input
-            onChange={event => this.handleOnChange(event, "description")}
-            value={description}
-          />
-          <input
-            onChange={event => this.handleOnChange(event, "url")}
-            value={url}
-          />
+          <label>動画タイトル
+            <input
+              required={true}
+              onChange={event => this.handleOnChange(event, "title")}
+              value={title}
+            />
+          </label><br />
+          <label>動画詳細
+            <input
+              onChange={event => this.handleOnChange(event, "description")}
+              value={description}
+            />
+          </label><br />
+          <label>URL
+            <input
+              onChange={event => this.handleOnChange(event, "url")}
+              value={url}
+            />
+          </label><br />
           <input type="submit" value="登録" />
         </form>
       </div>
@@ -46,8 +51,9 @@ class AddMovie extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    this.props.OnSubmitTitle(this.state)
-    this.setState(this.initial_state())
+    alert('submitted: ' + this.state);
+    // this.props.OnSubmitTitle(this.state)
+    // this.setState(this.initial_state())
   }
 }
 

@@ -1,5 +1,37 @@
-.App {
+header{
+  background-color: #24292e;
+  height: 100px;
+  width: 100%;
+}
+
+header h1{
+  margin-top: 0;
+  color: white;
+}
+
+.content{
+  padding: 0 10%;
+  /* text-align: center; */
+}
+
+footer{
+  background-color: #24292e;
+  height: 100px;
+  width: 100%;
+}
+
+footer h1{
+  color: white;
+}
+
+.form{
+  background-color: #61dafb;
   text-align: center;
+}
+
+.App {
+  /* text-align: center; */
+   /* padding: 0 10%; */
 }
 
 .App-logo {

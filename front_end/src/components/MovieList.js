@@ -13,7 +13,8 @@ class MovieList extends React.Component {
       return (
           <div className="">
             <p>{movie.id}. {movie.title}</p>
-            <p>{movie.description}</p>
+            <p>動画詳細：{movie.description}</p>
+            <p>URL：{movie.url}</p>
             {/* 埋め込みコード */}
             <Iframe url={movie.url}
               width="560px"
