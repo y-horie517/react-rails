@@ -1,9 +1,11 @@
 # README
 ## 概要
-フロントエンド：React 
-API：Ruby on rails の構成でのアプリ作成練習  
-
 YouTube動画のお気に入りリストを作るアプリケーション  
+フロントエンド：React   
+API：Ruby on rails   
+の構成でのアプリ作成練習  
+
+ 
 <img width="750" alt="スクリーンショット 2019-07-07 11 18 37" src="https://user-images.githubusercontent.com/47136469/60763162-80109b80-a0a9-11e9-943e-c73a263a0f49.png">
 
 ## 機能
