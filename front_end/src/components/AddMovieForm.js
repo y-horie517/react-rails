@@ -3,8 +3,7 @@ import React from 'react';
 class AddMovieForm extends React.Component {
   constructor(props) {
     super(props)
-
-    // 入力フォーム(input) 用の state をセットしておく
+    // 入力フォーム用のstateをセット
     this.state = {
       title: '',
       description: '',
@@ -12,12 +11,12 @@ class AddMovieForm extends React.Component {
     }
 
     this.host = "http://localhost:3001/"
-    //　作成するメソッドを this に bind する
+    //　作成するメソッドをthisにbind
     this.addMovie = this.addMovie.bind(this);
   }
 
   addMovie(event) {
-    // Rails 側の /api/v1/tasks を POST メソッドで叩き、タスクを作成する
+    // moviesコントローラのcreateアクション呼び出し
     let request = new Request(`${this.host}movies`, {
       method: 'POST',
       headers: new Headers({
@@ -32,9 +31,9 @@ class AddMovieForm extends React.Component {
 
     fetch(request).then(function (response) {
       return response.json();
-    }).then((task) => {
+    }).then(() => {
       // 動画追加が成功したら、一覧を再取得する
-      this.props.getTasks();
+      this.props.getMovies();
     }).catch(function (error) {
       console.error(error);
     }).finally(() => {
@@ -45,7 +44,7 @@ class AddMovieForm extends React.Component {
       })
     });
 
-    // preventDefault でブラウザ起因の onSubmit イベントを打ち消す
+    // preventDefault でブラウザ起因のonSubmitイベントを打ち消す
     // この記述が無いとページが遷移してしまう
     event.preventDefault();
   }
@@ -54,36 +53,39 @@ class AddMovieForm extends React.Component {
     let { title, description, url } = this.state;
 
     return (
-      <form onSubmit={this.addMovie}>
-        <label>タイトル</label>
-        <input
-          type="text" value={title}
-          onChange={(e) => {
-            this.setState({
-              title: e.target.value
-            })
-          }}
-        />
-        <label>詳細情報</label>
-        <input
-          type="text" value={description}
-          onChange={(e) => {
-            this.setState({
-              description: e.target.value
-            })
-          }}
-        />
-        <label>URL</label>
-        <input
-          type="text" value={url}
-          onChange={(e) => {
-            this.setState({
-              url: e.target.value
-            })
-          }}
-        />
-        <input type="submit" value="動画追加" />
-      </form>
+        <div>
+            <h2>動画追加</h2>
+            <form onSubmit={this.addMovie} className="movie-form">
+                <label>タイトル</label>
+                <input
+                type="text" value={title}
+                onChange={(e) => {
+                    this.setState({
+                    title: e.target.value
+                    })
+                }}
+                />
+                <label>詳細情報</label>
+                <input
+                type="text" value={description}
+                onChange={(e) => {
+                    this.setState({
+                    description: e.target.value
+                    })
+                }}
+                />
+                <label>URL(動画のID)</label>
+                <input
+                type="text" value={url}
+                onChange={(e) => {
+                    this.setState({
+                    url: e.target.value
+                    })
+                }}
+                />
+                <input type="submit" value="動画追加" className="submitbtn"/>
+            </form>
+        </div>
     )
   }
 }

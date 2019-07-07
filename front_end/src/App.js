@@ -18,15 +18,15 @@ class App extends React.Component {
     this.host = "http://localhost:3001/"
 
     // 動画一覧を取得するメソッドをthisにbind
-    this.getTasks = this.getTasks.bind(this);
+    this.getMovies = this.getMovies.bind(this);
   }
 
   // コンポーネントマウント時にタスク一覧を取得する
   componentDidMount() {
-    this.getTasks()
+    this.getMovies()
   }
 
-  getTasks() {
+  getMovies() {
     // 動画一覧を取得(movies)
     let request = new Request(`${this.host}movies`, {
       method: 'GET',
@@ -38,7 +38,7 @@ class App extends React.Component {
     fetch(request).then(function (response) {
       return response.json();
     }).then(function (movies) {
-      // 取得が完了したら state にセットする
+      // 取得が完了したらstateにセット
       this.setState({
         movies: movies
       });
@@ -52,8 +52,8 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <div className="content">
-          <AddMovieForm getTasks={this.getTasks} className="form"/>
-          <MovieList movies={this.state.movies} />
+          <AddMovieForm getMovies={this.getMovies}/>
+          <MovieList movies={this.state.movies} getMovies={this.getMovies} />
         </div>
         <Footer />
       </div>

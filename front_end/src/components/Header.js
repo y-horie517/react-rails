@@ -10,7 +10,7 @@ class Header extends React.Component {
     return (
       <div>
         <header>
-            <h1>Header</h1>
+            <h1>お気に入りのYouTube動画リスト</h1>
         </header>
       </div>
     )

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_141916) do
+ActiveRecord::Schema.define(version: 2019_07_06_234305) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title", default: "無題", null: false
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 2019_06_23_141916) do
     t.string "url", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "num"
+    t.string "thumbnail"
+    t.index ["num"], name: "index_movies_on_num", unique: true
+    t.index ["thumbnail"], name: "index_movies_on_thumbnail", unique: true
   end
 
   create_table "todos", force: :cascade do |t|
