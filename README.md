@@ -4,7 +4,8 @@ API：Ruby on rails
 の構成でのアプリ作成練習  
 
 ## 概要
-YouTube動画のお気に入りリストを作るアプリケーション
+YouTube動画のお気に入りリストを作るアプリケーション  
+<img width="1439" alt="スクリーンショット 2019-07-07 11 18 37" src="https://user-images.githubusercontent.com/47136469/60763140-024c9000-a0a9-11e9-9016-556349189bab.png">
 
 ## 機能
 * 動画の登録:タイトル、詳細情報、動画のID(URLの一部)(Ajax)  
@@ -16,8 +17,10 @@ YouTube動画のお気に入りリストを作るアプリケーション
 * サムネイルクリック時に埋め込み動画をモーダルで表示
 
 ## デモ
-![gif1](https://user-images.githubusercontent.com/47136469/60762939-c283a980-a0a4-11e9-8fd1-a55734f2db1d.gif)
-![gif2](https://user-images.githubusercontent.com/47136469/60762940-c44d6d00-a0a4-11e9-9c0a-799538622abe.gif)
+* 登録・削除  
+![タイトルなし1](https://user-images.githubusercontent.com/47136469/60763123-aaae2480-a0a8-11e9-9f42-1d60f9a38f80.gif)
+* モーダル表示・消去  
+![タイトルなし](https://user-images.githubusercontent.com/47136469/60763119-a550da00-a0a8-11e9-8627-bbb3e925aed1.gif)
 
 ## プロジェクト作成手順  
 1. APIモードで Rails アプリを作成  
